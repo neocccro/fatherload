@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private void Start()
-    {
-        Chance<Chance<GameObject>> chance = new Chance<Chance<GameObject>>();
-        Debug.Log(chance.Get());
-        Debug.Log(chance.Get() == null);
-    }
-
-
-
-
-    public Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
 
     [SerializeField] private float horizontalMultiplier, verticalMultiplier;
-
+    
+    private void Awake()
+    {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        Chance<GameObject> chance = new Chance<GameObject>();
+    }
 
     public void MoveRight()
     {

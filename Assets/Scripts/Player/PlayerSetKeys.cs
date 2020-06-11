@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class PlayerSetKeys : MonoBehaviour
 {
-    [SerializeField] private KeyCode left, right, up;
+    [SerializeField] private KeyCode left, right, up, down;
 
     private PlayerMovement playerMovement;
     private PlayerController playerController;
 
-    private void Start()
+    private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerController = GetComponent<PlayerController>();
+    }
 
-        playerController.SetKey(left, playerMovement.MoveLeft);
-        playerController.SetKey(right, playerMovement.MoveRight);
-        playerController.SetKey(up, playerMovement.MoveUp);
+    private void Start()
+    {
+        playerController.Add(left, playerMovement.MoveLeft);
+        playerController.Add(right, playerMovement.MoveRight);
+        playerController.Add(up, playerMovement.MoveUp);
     }
 }
