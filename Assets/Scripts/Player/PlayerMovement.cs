@@ -28,4 +28,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidbody2D.AddForce(Vector2.up * verticalMultiplier * Time.fixedDeltaTime);
     }
+
+    public void MoveDown()
+    {
+    }
 }

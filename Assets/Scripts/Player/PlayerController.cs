@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
         public bool Called = false;
         public KeyCode key;
         public Action action;
+
         public klaas(KeyCode key, Action action)
         {
             this.key = key;
@@ -43,6 +44,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool Did(KeyCode key)
+    {
+        foreach (klaas k in actions.Where(x => x.key == key && x.CalledLastFrame == true))
+        {
+            return true;
+        }
+        return false;
+    }
+    public bool Did(KeyCode key, Action action)
+    {
+        foreach (klaas k in actions.Where(x => x.key == key && x.action == action && x.CalledLastFrame == true))
+        {
+            return true;
+        }
+        return false;
+    }
     public bool Did(Action action)
     {
         foreach (klaas k in actions.Where(x => x.action == action && x.CalledLastFrame == true))
@@ -57,13 +74,13 @@ public class PlayerController : MonoBehaviour
         actions.Add(new klaas(key, action));
     }
 
-    public void Remove(KeyCode key, Action action)
-    {
-        actions.RemoveAll(x => x.key == key && x.action == action);
-    }
     public void Remove(KeyCode key)
     {
         actions.RemoveAll(x => x.key == key);
+    }
+    public void Remove(KeyCode key, Action action)
+    {
+        actions.RemoveAll(x => x.key == key && x.action == action);
     }
     public void Remove(Action action)
     {

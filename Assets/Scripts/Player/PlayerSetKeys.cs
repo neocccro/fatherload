@@ -20,5 +20,6 @@ public class PlayerSetKeys : MonoBehaviour
         playerController.Add(left, playerMovement.MoveLeft);
         playerController.Add(right, playerMovement.MoveRight);
         playerController.Add(up, playerMovement.MoveUp);
+        playerController.Add(down, playerMovement.MoveDown);
     }
 }
