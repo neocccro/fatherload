@@ -5,26 +5,32 @@ using UnityEngine.Tilemaps;
 
 public class Mapmaker : MonoBehaviour
 {
-    public RuleTile tile;
-    public Tilemap tilemap;
+    [SerializeField] public int width;
+    [SerializeField] public int height;
 
-    public int egh;
+    [SerializeField] private Tilemap tilemapOre;
+    [SerializeField] private Tilemap tilemapDirt;
+    [SerializeField] private Tilemap tilemapBackground;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private RuleTile tile;
+    [SerializeField] private Vector3 startPoint;
+    private Vector3Int Base;
+
+
+    void Awake()
     {
-        tilemap = GetComponent<Tilemap>();
-        //Vector3Int currentCell = tilemap.WorldToCell(Vector3.zero);
-        //tilemap.SetTile(currentCell, tile);
+        Base = tilemapDirt.WorldToCell(startPoint);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (egh % 10 == 0)
+        for (int y = 0; y < height; y++)
         {
-            tilemap.SetTile(tilemap.WorldToCell(Vector3.zero + new Vector3((egh/10f) % 10f, egh / 100, 0)), tile);
+            for (int x = 0; x < width; x++)
+            {
+                tilemapDirt.SetTile(Base + new Vector3Int(width / 2 - x - 1, -y, 0), tile);
+                tilemapBackground.SetTile(Base + new Vector3Int(width / 2 - x - 1, -y, 0), tile);
+            }
         }
-        egh++;
     }
 }

@@ -16,17 +16,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveRight()
     {
-        rigidbody2D.AddForce(Vector2.right * horizontalMultiplier * Time.fixedDeltaTime);
+        rigidbody2D.AddForce(Vector2.right * horizontalMultiplier * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     public void MoveLeft()
     {
-        rigidbody2D.AddForce(Vector2.left * horizontalMultiplier * Time.fixedDeltaTime);
+        rigidbody2D.AddForce(Vector2.left * horizontalMultiplier * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     public void MoveUp()
     {
-        rigidbody2D.AddForce(Vector2.up * verticalMultiplier * Time.fixedDeltaTime);
+        rigidbody2D.AddForce(Vector2.up * verticalMultiplier * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     public void MoveDown()
