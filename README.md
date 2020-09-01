@@ -1,2 +1,3 @@
 # fatherload
 is game
+yes
